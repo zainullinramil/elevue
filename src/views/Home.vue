@@ -1,17 +1,14 @@
 <template>
   <div class="home">
-    <span>Status: {{status}}</span>
-
-    <ul>
-      <li v-for="(message, index) in messageCollection" :key="index">{{message}}</li>
-    </ul>
+    <span>{{socketData}}</span>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import { mapActions } from 'vuex'
 
-const ws = new WebSocket("ws://localhost:3003");
+// const ws = new WebSocket("ws://localhost:3003");
 
 export default {
   name: "home",
@@ -21,12 +18,14 @@ export default {
       messageCollection: []
     };
   },
-  created() {
-    ws.onopen = () => this.setStatus("ONLINE");
-    ws.onclose = () => this.setStatus("DISCONNECTED");
-    ws.onmessage = resp => this.addMessage(resp.data);
+  mounted() {
+    // ws.onopen = () => this.setStatus("ONLINE");
+    // ws.onclose = () => this.setStatus("DISCONNECTED");
+    // ws.onmessage = resp => this.addMessage(resp.data);
+    this.startSocket();
   },
   methods: {
+    ...mapActions(['startSocket']),
     setStatus(status) {
       this.status = status;
     },
@@ -36,6 +35,10 @@ export default {
       this.messageCollection.push(resp);
     }
   },
-  destroyed() {}
+  computed: {
+    socketData() {
+      return this.$store.getters.getSocketData
+    }
+  },
 };
 </script>
