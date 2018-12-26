@@ -1,33 +1,6 @@
 <template>
   <div id="app">
-    <el-container style="height: 650px; border: 1px solid #eee">
-      <el-aside width="200px" style="background-color: rgb(238, 241, 246)" v-if="false">
-        <el-menu
-          collapse="true"
-          background-color="#545c64"
-          text-color="#fff"
-          active-text-color="#ffd04b"
-        >
-          <router-link tag="span" to="/">
-            <el-menu-item index="1">
-              <i class="el-icon-setting"></i>
-              <span>Работа</span>
-            </el-menu-item>
-          </router-link>
-          <router-link tag="span" to="/about">
-            <el-menu-item index="2">
-              <i class="el-icon-bell"></i>
-              <span>Сообщения</span>
-            </el-menu-item>
-          </router-link>
-          <router-link tag="span" to="/settings">
-            <el-menu-item index="3">
-              <i class="el-icon-setting"></i>
-              <span>Настройки</span>
-            </el-menu-item>
-          </router-link>
-        </el-menu>
-      </el-aside>
+    <el-container style="height: 600px; border: 1px solid #eee">
 
       <el-container>
         <el-main>
